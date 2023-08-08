@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[OrderMain]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)

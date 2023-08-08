@@ -1,0 +1,247 @@
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>Incident Intimation</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="mb-2">Name</label>
+                        <input class="form-control" type="text" placeholder="chirag Makwana" autocomplete="off" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="mb-2">Designation</label>
+                        <input class="form-control" type="text" placeholder="ASSOCIATE" autocomplete="off" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="mb-2">Department</label>
+                        <input class="form-control" type="text" placeholder="EHS" autocomplete="off" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="mb-2">Contact</label>
+                        <input class="form-control" type="text" placeholder="9099489390" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>Type of Incident</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Select an option..</option>
+                            <option value="1">Near Miss</option>
+                            <option value="2">Process Safety Near Miss</option>
+                            <option value="3">High Potential Near Miss</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>Incident Detail</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="p-field p-col-12"><br>
+                            <label for="icon">Date</label>
+                            <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-field p-col-12"><br>
+                            <label for="icon">Time</label>
+                            <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <label for="icon mb-3">Incident Department</label><br>
+                        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities1" defaultLabel="Select a City"
+                            optionLabel="name">
+                        </p-multiSelect>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <label for="icon mb-3">Section</label><br>
+                        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities1" defaultLabel="Select a City"
+                            optionLabel="name">
+                        </p-multiSelect>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label class="mb-2">Incident Spot</label>
+                        <input class="form-control" type="text" placeholder="" autocomplete="off" />
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label class="mb-2">Description of Incident:</label>
+                        <input class="form-control" type="text" placeholder="" autocomplete="off" />
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label class="mb-2">Remark:</label>
+                        <input class="form-control" type="text" placeholder="" autocomplete="off" />
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label class="mb-2">Immediate Action taken:</label>
+                        <input class="form-control" type="text" placeholder="" autocomplete="off" />
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label class="mb-2">Responsible Person:</label>
+                        <input class="form-control" type="text" placeholder="" autocomplete="off" />
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <p>Activity Performed by Injured: <p-button (click)="showBasicDialog()" label="Select Activity"
+                                class="mt-2"></p-button></p>
+                        <label class="mb-2">Other Activity (If Any):</label>
+                        <input class="form-control" type="text" placeholder="If any" autocomplete="off" />
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <p>Plant:<br><button type="button" disabled class="liva">liva</button></p>
+                        <p>Division:<br><button type="button" disabled class="liva">Formulation</button></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-3 choosefile">
+            <form action="/action_page.php" class="mt-4">
+                <label for="myfile" class="mr-2">ImagePath:</label>
+                <input type="file" id="myfile" name="myfile"><br><br>
+            </form>
+
+        </div>
+        <div class="col-md-12 table-responsive injurytable mb-0">
+            <label class="mt-3 px-4">Injured & Injury Details</label>
+            <table class="table table-bordered ehs-table">
+                <thead>
+                    <td>Empl. No</td>
+                    <td>Name Dept./ Agency</td>
+                    <td>Designation Shift</td>
+                    <td>Age Doing Job from</td>
+                    <td>Gender With Company from</td>
+                    <td>Body-Part Injured</td>
+                    <td>PPE's Used</td>
+                    <td>Contact No</td>
+                    <td>Resuming Date</td>
+                    <td>Medical Treatment</td>
+                    <td>Doctor Certificate</td>
+                </thead>
+                <tr>
+                    <td class="incidenttd"><input class="form-control" type="text" placeholder="" autocomplete="off" />
+                    </td>
+                    <td class="incidenttd"><input class="form-control" type="text" placeholder="Name"
+                            autocomplete="off" /><input class="form-control mt-1" type="text" placeholder="Dept./Agency"
+                            autocomplete="off" /></td>
+                    <td class="incidenttd"><select class="form-select" aria-label="Select">
+                            <option>Contractor</option>
+                            <option>Visitor</option>
+                        </select>
+                        <select class="form-select mt-1" aria-label="Select">
+                            <option>First</option>
+                            <option>Second</option>
+                            <option>Third</option>
+                            <option>General</option>
+                        </select>
+                    </td>
+                    <td class="incidenttd"><input class="form-control" type="text" placeholder=""
+                            autocomplete="off" /><select class="form-select mt-1" aria-label="Select">
+                            <option>
+                                < 1 Month</option>
+                            <option>1-12 Months</option>
+                            <option>1-5 Years</option>
+                            <option>> 5 Years</option>
+                        </select></td>
+                    <td class="incidenttd"><select class="form-select mt-1" aria-label="Select">
+                            <option>
+                                Male</option>
+                            <option>Female</option>
+                        </select><select class="form-select mt-1" aria-label="Select">
+                            <option>
+                                < 1 Month</option>
+                            <option>1-12 Months</option>
+                            <option>1-5 Years</option>
+                            <option>> 5 Years</option>
+                        </select></td>
+                    <td><p-button (click)="showBasicDialog2()" label="Select Part"></p-button></td>
+                    <td><p-button (click)="showBasicDialog3()" label="Select PPE's"></p-button></td>
+                    <td class="incidenttd"><input class="form-control" type="text" placeholder="" autocomplete="off" />
+                    </td>
+                    <td class="incidenttd">
+                        <div class="p-field p-col-12">
+                            <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon" [style]="{'width':'95%'}"
+                                [inputStyle]="{'width':'95%'}"></p-calendar>
+                        </div>
+                    </td>
+                    <td style="width:60px; padding: 5px;"><select class="form-select mt-1" aria-label="Select"
+                            style="border: 1px solid #6C8C5D;">
+                            <option>
+                                Yes</option>
+                            <option>No</option>
+                        </select>
+                    </td>
+                    <td class="incidenttd"><input type="file" name="uploadfile" id="img" style="display:none;" />
+                        <label for="img"
+                            style="border: 1px solid #6C8C5D; font-size: 12px; line-height: 15px; border-radius: 5px;">Choose
+                            file</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>4. Witness Details</p>
+            </div>
+            <p class="witness p-3 mt-0">Has Witness? :
+                <select>
+                    <option value="Yes">Yes</option>
+                    <option selected="selected" value="No">No</option>
+                </select>
+            </p>
+        </div>
+    </div>
+</div>
+<button type="button" class="searchbtn">Next</button>
+<p-dialog header="Activity Status" [(visible)]="displayBasic" [modal]="true" [style]="{width: '50vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <hr class="modalhr">
+    <p class="m-0">...</p>
+    <hr class="modalhr">
+    <ng-template pTemplate="footer">
+        <p-button (click)="displayBasic=false" label="Close" class="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Check Injured Body Parts" [(visible)]="displayBasic2" [modal]="true" [style]="{width: '50vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <hr class="modalhr">
+    <p class="m-0">...</p>
+    <hr class="modalhr">
+    <ng-template pTemplate="footer">
+        <p-button (click)="displayBasic=false" label="Close" class="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Check Applicable PPE's Used" [(visible)]="displayBasic3" [modal]="true" [style]="{width: '50vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <hr class="modalhr">
+    <p class="m-0">...</p>
+    <hr class="modalhr">
+    <ng-template pTemplate="footer">
+        <p-button (click)="displayBasic=false" label="Close" class="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>

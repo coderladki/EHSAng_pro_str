@@ -1,0 +1,267 @@
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>PPE's of {{TypeName}}</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered ehs-table">
+                        <thead>
+                            <td>PPE</td>
+                            <td></td>
+                        </thead>
+                        <!-- <tr *ngFor="let pe of PPPEList">
+                            <td>
+                                <div>
+                                    <select class="form-select" aria-label="Select" [(ngModel)]="PPPEValue">
+                                        <option *ngFor="let p of MasterPPPEList" value="{{p}}">
+                                            {{p}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <i class="fa fa-plus mr-2" style="color:black"></i>
+                            </td>
+                        </tr> -->
+                        <tr>
+                            <td>
+                                <div>
+                                    <select class="form-select" aria-label="Select" [(ngModel)]="PPPEValue">
+                                        <option *ngFor="let p of MasterPPPEList" value="{{p}}">
+                                            {{p.PppeTypeName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="pull-right" disabled>First</button>
+                    <button class="pull-right" disabled>Previous</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>Activity of {{TypeName}}</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered ehs-table">
+                        <thead>
+                            <td>TemplateId</td>
+                            <td>TemplateName</td>
+                            <td></td>
+                        </thead>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="TemplateName">
+                                </div>
+
+                            </td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                    <button class="pull-right" disabled>First</button>
+                    <button class="pull-right" disabled>Previous</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>Hazards of {{TypeName}}</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered ehs-table">
+                        <thead>
+                            <td>HazardId</td>
+                            <td>Hazard Name</td>
+                            <td>Display Order</td>
+                            <td>Option Type</td>
+                            <td>Option Value</td>
+                            <td>Ask Notes</td>
+                            <td></td>
+                        </thead>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="HazardName" />
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="DisplayOrder" />
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <select class="form-select" [(ngModel)]="OptionType">
+                                        <option *ngFor="let p of PPPEList" value="{{p}}">
+                                            {{p}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="OptionValue" />
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="checkbox" />
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <button class="pull-right" disabled>First</button>
+                    <button class="pull-right" disabled>Previous</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>Default Precautions</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered ehs-table">
+                        <thead>
+                            <td>DefaultId</td>
+                            <td>PrecautionId</td>
+                            <td></td>
+                        </thead>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div>
+                                    <select class="form-select" [(ngModel)]="PrecautionId">
+                                        <option *ngFor="let p of DefaultPrecauitonsMaster" value="{{p}}">
+                                            {{p.Value}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>Important Notes</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered ehs-table">
+                        <thead>
+                            <td>NotesId</td>
+                            <td>Notes</td>
+                            <td></td>
+                        </thead>
+                        <tr *ngFor="let note of Notes">
+                            <td>{{note.Id}}</td>
+                            <td>
+                                {{note.NoteDesc}}
+                            </td>
+                            <td>
+
+                                <i class="fa fa-trash pointer"></i><i class="fa fa-pencil mr-3 pointer"
+                                    style="color: black;"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="NewNote">
+                                </div>
+                            </td>
+                            <td>
+                                <i class="fa fa-plus mr-2" style="color:black"></i>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="incident-header">
+                <p>Verification List</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered ehs-table">
+                        <thead>
+                            <td>ListId</td>
+                            <td>VerificationText</td>
+                            <td>DisplayOrder</td>
+                            <td>Weightage</td>
+                            <td></td>
+                        </thead>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="VerificationText">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="VerificationDisplayOrderText">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="VerificationWeightageText">
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

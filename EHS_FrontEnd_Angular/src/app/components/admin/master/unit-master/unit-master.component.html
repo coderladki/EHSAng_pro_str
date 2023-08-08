@@ -1,0 +1,263 @@
+<div class="card card-body">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Unit Code</h4>
+        </div>
+        <div class="col-md-6 text-right">
+            <p-button
+                (click)="changeModalTitle('add')"
+                icon="pi pi-plus"
+                label="Add Unit"
+            ></p-button>
+        </div>
+    </div>
+</div>
+<div class="card card-body">
+    <p-table
+        responsiveLayout="scroll"
+        [value]="allUnits"
+        [paginator]="true"
+        [rows]="10"
+        class="table table-bordered ehs-table"
+        styleClass="p-datatable-gridlines"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <td>Unit Code</td>
+                <td>Display Name</td>
+                <td>Division</td>
+                <td>Unit Name</td>
+                <td>Username</td>
+                <td>Password</td>
+                <td>Unit EHS Head</td>
+                <td>Unit EHS Admin</td>
+                <td>Unit Head</td>
+                <td>Action</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-unit let-rowIndex="rowIndex">
+            <tr>
+                <td>{{ unit?.unitCode }}</td>
+                <td>{{ unit?.unitDisplayName }}</td>
+                <td>{{ unit?.divisionName }}</td>
+                <td>
+                    <div class="mb-2">{{ unit?.unitUserName }}</div>
+                    <div>
+                        <button
+                            style="display: none"
+                            type="button"
+                            class="btn btn-primary"
+                            (click)="loginPlantAdmin(unit)"
+                        >
+                            Login
+                        </button>
+                    </div>
+                </td>
+                <td>{{ unit?.unitUserName }}</td>
+                <td>{{ unit?.unitUserPassword }}</td>
+                <td>
+                    <div>{{ unit?.unitEHSHead }}</div>
+                    <div>{{ unit?.unitEHSHeadUser }}</div>
+                    <div>{{ unit?.unitEHSHeadPhone }}</div>
+                </td>
+                <td>
+                    <div>{{ unit?.unitEHSAdmin }}</div>
+                    <div>{{ unit?.unitEHSAdminUser }}</div>
+                    <div>{{ unit?.unitEHSAdminPhone }}</div>
+                </td>
+                <td>
+                    <div>{{ unit?.unitHead }}</div>
+                    <div>{{ unit?.unitHeadUser }}</div>
+                    <div>{{ unit?.unitHeadPhone }}</div>
+                </td>
+                <td>
+                    <div class="d-flex">
+                        <i
+                            class="fa fa-pencil mr-3 pointer"
+                            aria-hidden="true"
+                            (click)="onEditUnitbtn(unit)"
+                        ></i>
+                        <i
+                            class="fa fa-trash pointer"
+                            aria-hidden="true"
+                            (click)="onDeleteUnitBtn(unit)"
+                        ></i>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td
+                    colspan="6"
+                    style="font-weight: 900; font-size: 15px; color: red"
+                ></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<div class="card mt-4">
+    <button class="regenerate">Regenerate logo</button>
+</div>
+<p-dialog
+    header="{{ modalTitle }}"
+    [(visible)]="displayBasic"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <hr class="modalhr" />
+    <p class="m-0"></p>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="">Unit Code</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="Search Employee"
+                autocomplete="off"
+                [(ngModel)]="iUnit.UnitCode"
+            />
+        </div>
+        <div class="col-md-6">
+            <label class="mb-2">Display Name</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="Search Employee"
+                autocomplete="off"
+                [(ngModel)]="iUnit.unitDisplayName"
+            />
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-2">Division</label>
+            <select
+                class="form-select"
+                aria-label="Select"
+                [(ngModel)]="iUnit.DivisionId"
+                id="ddlDivision"
+            >
+                <option
+                    *ngFor="let division of divisionList"
+                    [value]="division.Id"
+                >
+                    {{ division.Name }}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-1">Unit Name</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="Search Employee"
+                autocomplete="off"
+                [(ngModel)]="iUnit.UnitName"
+                *ngIf="actionMode == 'add'"
+            />
+            <p-multiSelect
+                [options]="modules"
+                [showToggleAll]="false"
+                [(ngModel)]="selectedModules"
+                optionLabel="name"
+                [virtualScroll]="true"
+                [filter]="false"
+                [virtualScrollItemSize]="43"
+                class="multiselect-custom-virtual-scroll"
+                *ngIf="actionMode == 'edit'"
+                [style]="{ width: '100%' }"
+            >
+                <ng-template let-module pTemplate="item">
+                    <div class="country-item">
+                        <div>{{ module.name }}</div>
+                    </div>
+                </ng-template>
+            </p-multiSelect>
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-1">Username</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="Search Employee"
+                autocomplete="off"
+                [(ngModel)]="iUnit.UnitUserName"
+            />
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-1">Password</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="Search Employee"
+                autocomplete="off"
+                [(ngModel)]="iUnit.UnitUserPassword"
+            />
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-1">Unit EHS Head</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="Search Employee"
+                autocomplete="off"
+                [(ngModel)]="iUnit.UnitEHSHead"
+            />
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-1">Unit EHS Admin</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="Search Employee"
+                autocomplete="off"
+                [(ngModel)]="iUnit.UnitEHSAdmin"
+            />
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-1">Unit Head</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="Search Employee"
+                autocomplete="off"
+                [(ngModel)]="iUnit.UnitHead"
+            />
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-1">Web File</label>
+            <input
+                class="form-control"
+                type="file"
+                placeholder="Search Employee"
+                autocomplete="off"
+                (change)="onChangeWebFile($event)"
+            />
+        </div>
+        <div class="col-md-6 mt-2">
+            <label class="mb-1">Mobile File</label>
+            <input
+                class="form-control"
+                type="file"
+                placeholder="Search Employee"
+                autocomplete="off"
+                (change)="onChangeMobileFile($event)"
+            />
+        </div>
+    </div>
+    <hr class="modalhr" />
+    <ng-template pTemplate="footer">
+        <p-button
+            (click)="displayBasic = false"
+            label="Close"
+            class="p-button-text"
+        ></p-button>
+        <p-button
+            (click)="onSubmitBtn()"
+            label="Submit"
+            class="p-button-text"
+        ></p-button>
+    </ng-template>
+</p-dialog>

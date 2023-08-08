@@ -1,0 +1,85 @@
+<div class="card p-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h4 id="bottom">Section Of EHS</h4>
+            <table class="table table-bordered ehs-table">
+                <th>Section Name</th>
+                <th></th>
+                <tr style="line-height:20px">
+                    <td>MEE</td>
+                    <td><i class="fa fa-pencil" aria-hidden="true"></i><i class="fa fa-trash" aria-hidden="true"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ETP</td>
+                    <td><i class="fa fa-pencil" aria-hidden="true"></i><i class="fa fa-trash" aria-hidden="true"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input class="form-control" type="text" placeholder="" autocomplete="off" /></td>
+                    <td><i class="fa fa-pencil" aria-hidden="true"></i><i class="fa fa-trash" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h4>Responsible Person</h4>
+            <table class="table table-bordered ehs-table">
+                <th>Category</th>
+                <th>Employee</th>
+                <th></th>
+                <tr>
+                    <td>SI</td>
+                    <td>Shivani Bangera | 120099</td>
+                    <td><button class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="delete mt-2">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select class="form-select" aria-label="Select">
+                            <option>--Select--</option>
+                            <option>SI</option>
+                            <option>SLT</option>
+                        </select>
+                    </td>
+                    <td><input class="form-control" type="text" placeholder="" autocomplete="off" />
+                    </td>
+                    <td><button class="delete">Insert</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-12">
+            <label class="mb-2">Bulk Insert</label>
+            <input class="form-control" type="text" placeholder="" autocomplete="off" style="width: 60%;">
+            <button class="addbtn mt-3">Add Section Name</button>
+            <h4>Merge Department</h4>
+            <p style="color: red">Notes: This Action cannot be undone, please take backup before executing this.</p>
+        </div>
+        <div class="card">
+            <div class="row">
+                <div class="d-flex flex-columnm justify-content-between col-md-12 mt-3">
+                    <div class="d-flex col-md-4 p-3">
+                        <h6>Please select New Department for Merge :</h6>
+                    </div>
+                    <div class="d-flex col-md-4">
+                        <select class="form-select" aria-label="Select">
+                            <option value=" ">--Select Department--</option>
+                            <option value="113">Engineering</option>
+                            <option value="117">HR Admin</option>
+                            <option value="482">IT</option>
+                            <option value="114">Production</option>
+                            <option value="115">Quality Assurance</option>
+                            <option value="293">Quality Control - Chemical</option>
+                            <option value="116">Quality Control - Micro</option>
+                            <option value="118">Warehouse</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="addbtn ml-3">Merge</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

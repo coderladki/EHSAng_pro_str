@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[Lead]
+(
+	[Id] BIGINT PRIMARY KEY IDENTITY(1,1),
+	CompanyName nvarchar(300),
+	[Address] NVARCHAR(1000),
+	Area nvarchar(100),
+	City nvarchar(100),
+	[State] nvarchar(50),
+	District nvarchar(100),
+	Country nvarchar(100),
+	ContactPersonName nvarchar(100),
+	ContactPersonEmail nvarchar(300),
+	ContactPersonPhoneno1 numeric(10),	
+	ContactPersonPhoneno2 numeric(10),
+	BusinessVertical nvarchar(50),
+	LeadSource nvarchar(50),
+	InterestedProductId bigint,
+	CreateDate datetime,
+	FollowUpDate datetime,
+	FollowUpUser nvarchar(100),
+	FollowUpAction	nvarchar(250),
+	LeadStatus nvarchar(20),
+	PaymentStatus nvarchar(20),
+	DateOfPurchase datetime,
+	LeadOwner bigint,
+	LeadAssignedTo bigint,
+
+)

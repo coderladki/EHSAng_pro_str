@@ -1,0 +1,123 @@
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex incident-header">
+                <p>Search Work Permit</p>
+            </div>
+            <div class="card-body">
+                <div class="row pb-4">
+                    <div class="col-md-3">
+                        <label for="End Date" class="mt-2">Start Date</label>
+                        <p-calendar [(ngModel)]="date" [showIcon]="true" inputId="icon"
+                            placeholder="01-Mar-2023"></p-calendar>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="End Date" class="mt-2">End Date</label>
+                        <p-calendar [(ngModel)]="date" [showIcon]="true" inputId="icon"
+                            placeholder="03-Mar-2023"></p-calendar>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="searchbtn">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card p-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex incident-header">
+                <div class="d-flex justify-content-between">
+                    <p>Work Permit</p>
+                </div>
+                <div class="d-flex justify-content-between ml-auto">
+                    <button class="searchbtn">Export</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row pb-4">
+                    <div class="table-responsive ehs-table">
+                        <table class="table table-bordered">
+                            <!-- <tr style="width:100%">
+                                <th colspan="2" align="center">Sr#</th>
+                                <th colspan="2" align="center">Unit</th>
+                                <th colspan="2" align="center">Work Permit Status</th>
+                                <th colspan="2" align="center">Extended Work Permit</th>
+                                <th colspan="2" align="center">% Compliance</th>
+                            </tr> -->
+                            <tr style="width: 100%;">
+                                <td rowspan="2" align="center"><b>Sr#</b></td>
+                                <td rowspan="2" align="center"><b>Unit</b></td>
+                                <td colspan="4" align="center"><b>Work Permit Status</b></td>
+                                <td rowspan="2" align="center"><b>Extended Work Permit</b></td>
+                                <td rowspan="2" align="center"><b>% Compliance</b></td>
+                            </tr>
+                            <tr style="width: 100%; text-align: center;">
+                                <td><b>Total</b></td>
+                                <td><b>Closer Pending</b></td>
+                                <td><b>Completed</b></td>
+                                <td><b>Rejected</b></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <p-button (click)="showBasicDialog()" label="Zydus Corporate Park"></p-button>
+                                </td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="ZCP Work Permit" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="table-responsive ehs-table">
+        <table class="table table-bordered">
+            <!-- <tr style="width:100%">
+                                        <th colspan="2" align="center">Sr#</th>
+                                        <th colspan="2" align="center">Unit</th>
+                                        <th colspan="2" align="center">Work Permit Status</th>
+                                        <th colspan="2" align="center">Extended Work Permit</th>
+                                        <th colspan="2" align="center">% Compliance</th>
+                                    </tr> -->
+            <tr style="width: 100%;">
+                <td rowspan="2" align="center"><b>Sr#</b></td>
+                <td rowspan="2" align="center"><b>Unit</b></td>
+                <td colspan="4" align="center"><b>Work Permit Status</b></td>
+                <td rowspan="2" align="center"><b>Extended Work Permit</b></td>
+                <td rowspan="2" align="center"><b>% Compliance</b></td>
+            </tr>
+            <tr style="width: 100%; text-align: center;">
+                <td><b>Total</b></td>
+                <td><b>Closer Pending</b></td>
+                <td><b>Completed</b></td>
+                <td><b>Rejected</b></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>
+                    <p-button (click)="showBasicDialog()" label="Zydus Corporate Park"></p-button>
+                </td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00</td>
+            </tr>
+        </table>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button (click)="displayBasic=false" label="Close" styleClass="p-button-text"></p-button>
+        <p-button (click)="displayBasic=false" label="Save Changes"></p-button>
+    </ng-template>
+</p-dialog>

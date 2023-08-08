@@ -1,0 +1,541 @@
+<!doctype html>
+                    <html lang='en'>
+                      <head>
+                        <meta charset='utf-8'/>
+                        <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+                        <meta name='viewport' content='width=device-width, initial-scale=1'/>
+                        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+                        <title>Patanjali Tax Invoice</title>
+
+                    <style>
+
+                        body{
+                            font-size: 14px;
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        *{
+                            box-sizing: border-box;
+                            padding: 0;
+                            margin: 0;
+                        }
+
+                    .invoice-wrapper {
+                      width: 1200px;
+    border: 2px solid #000;
+    margin: auto;
+    padding: 10px;
+    display: inline-block;
+                    }
+
+                    .invoice-wrapperbordr{
+                        float: left;
+                        width: 100%;
+                        border: 6px solid #4c4c4c;
+                    }
+
+                    header.invoice-header {
+                        float: left;
+                        width: 100%;    
+                    }
+                    .Patanjali-logo img {
+                        width: 70%;
+                    }
+
+                    .Patanjali-logo {
+                        float: left;
+                        text-align: left;
+                        width: 24%;
+                    }
+
+                    .header-top {
+                        float: left;
+                        text-align: center;
+                        width: 50%;
+                        padding: 2px 0;
+                    }
+                    .header-top b {
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                    }
+
+                    .header-top p {
+                        margin: 0;
+                        font-size: 14px;
+                        color: #616161;
+                        padding: 2px 0;
+                    }
+
+                    span.cc {
+                        color: #6d6d6d;
+                        font-size: 15px;
+                        width: 80px;
+                        display: inline-block;
+                    }
+
+                    span.aa {
+                        float: left;
+                        width: 100%;
+                        font-size: 14px;
+                        font-weight: 600;
+                        padding: 2px 0;
+                    }
+
+                    span.ti {
+                        float: left;
+                        width: 100%;
+                    }
+
+                    span.ti b{
+                        font-size: 18px;
+                        font-weight: 600;
+                        text-transform: capitalize;
+                    }
+
+                    .deatails-bill {
+                        float: left;
+                        width: 100%;
+                        border: 1px solid #000;
+                    }
+                    .deatails-bill-left {
+                        float: left;
+                        width: 50%;
+                        padding: 10px;
+                        border: 1px solid #000;
+                        min-height: 110px;
+                        border-left: 0;
+                        border-top: 0;
+                        border-bottom: 0;
+                    }
+                    .label-invo {
+                        float: left;
+                        width: 100%;
+                        margin: 2px 0;
+                    }
+                    label.label-invoice {
+                        float: left;
+                        width: 50%;
+                        font-size: 15px;
+                        font-weight: 600;
+                    }
+                    .label-invo p {
+                        float: left;
+                        margin: 0;
+                    }
+
+                    .ss {
+                        float: left;
+                        width: 50%;
+                    }
+
+                    .deatails-bill-leftlft {
+                        float: left;
+                        width: 50%;
+                    }
+
+                    .deatails-bill-left.rgt label.label-invoice {
+                        width: 120px;
+                    }
+
+                    table.invice-table {
+                        float: left;
+                        width: 100%;
+                        text-align: center;
+                    }
+                    .invice-tablewrapper {
+                        float: left;
+                        width: 100%;
+                    }
+
+                    table.invice-table {
+                        float: left;
+                        width: 100%;
+                        text-align: center;
+                        border: 1px solid #000;
+                        margin: 0px 0;
+                        box-sizing: border-box;
+                    }
+
+                    th {
+                        padding: 4px;
+                        line-height: 1.42857143;
+                        vertical-align: top;
+                        border: 1px solid #ddd;
+                    }
+
+                    td {
+                        padding: 4px;
+                        line-height: 1.42857143;
+                        vertical-align: top;
+                        border: 1px solid #ddd;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                    }
+
+                    .tax-invice-btmlft {
+                        float: left;
+                        width: 56%;
+                    }
+
+                    .tax-invice-btn {
+                        float: left;
+                        width: 100%;
+                    }
+
+                    .tax {
+                        font-size: 16px;
+                        width: 100%;
+                        float: left;
+                        padding: 6px 6px;
+                        font-weight: 600;
+                    }
+
+                    .tax-invice-btmlft table {
+                        min-height: 160px;
+                        width: 100%;
+                    }
+
+                    .ttl {
+                        padding: 6px;
+                        border: 1px solid #ddd;
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+
+                    .tax-invice-btn th, .tax-invice-btn td{
+                        font-size: 12px;
+                    }
+
+                    .tax-invice-btmrgt {
+                        float: right;
+                        width: 25%;
+                        border: 1px solid #f4f4f4;
+                    }
+
+                    .invice-ttl {
+                        border-bottom: 1px solid #f4f4f4;
+                        padding: 6px 16px;
+                    }
+
+                    .invice-ttl label {
+                        width: 50%;
+                        display: inline-block;
+                    }
+
+                    .invice-ttl span{
+                        float:right;
+                    }
+
+                    .INVOICEBTM {
+                        FLOAT: RIGHT;
+                        PADDING: 26PX 10px;
+                    }
+                    .INVOICEBTM label {
+                        color: #ccc;
+                        font-size: 18px;
+    
+                    }
+                    .INVOICEBTM b {
+                        font-size: 15px;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+                    </style>
+
+                    </head>
+                      <body>
+                        <div class='invoice-wrapper'>
+                            <div class='invoice-wrapperbordr'>
+                                <header class='invoice-header'>
+                                    
+                                    <div class='header-top'>
+                                        <b>FIT INDIA ORGANIC PRIVATE LIMITED</b>
+                                        <p>OPPOSITE ARYA VANPRASTHA ASHRAM, ARYA NAGAR, JWALAPUR, HARIDWAR, Uttarakhand, India, 249408</p>
+                                        <span class='cc'>CityHaridwar</span>
+                                        <span class='cc'>State-</span>
+                                        <span class='cc'></span>
+                                        <span class='aa'>M.No.7060830535</span>
+                                        <span class='aa'>GST No.</span>
+                                        <span class='ti'><b>Tax Invoice</b></span>
+                                    </div>
+                                </header>
+
+                                <div class='deatails-bill'>
+                                    <div class='deatails-bill-left'>
+                                        <div class='deatails-bill-leftlft'>
+                                            <div class='label-invo'>
+                                                <label class='label-invoice'>Bill Number :</label>
+                                                <p>CO-TI1000AAA2021</p>
+                                            </div>
+                                            <div class='label-invo'>
+                                                <label class='label-invoice'>Bill Date  :5/22/2020 12:00:00 AM</label>
+                                                <p>07-11-2019</p>
+                                            </div>
+                                            <div class='label-invo'>
+                                                <label class='label-invoice'>Counter  :</label>
+                                                <p>CO-25</p>
+                                            </div>
+                                            <div class='label-invo'>
+                                                <label class='label-invoice'>User Name  :Admin</label>
+                                                <p>Vipin</p>
+                                            </div>
+
+                                        </div>
+
+                                        <div class='ss'>
+                                            <div class='label-invo'>
+                                            <label class='label-invoice'>Bill type  :cashandcredit</label>
+                                            <p>Cash</p>
+                                        </div>
+                                        <div class='label-invo'>
+                                            <label class='label-invoice'>Bill time  : 22:02</label>
+                                            <p>CO-225-482</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class='deatails-bill-left rgt'>
+
+                    
+                                            <div class='label-invo'>
+                                                <label class='label-invoice'>Cust Name :santosh singh  </label>
+                                                <p></p>
+                                            </div>
+                                            <div class='label-invo'>
+                                                <label class='label-invoice'>M No. :+919699840085</label>
+                                                <p>0</p>
+                                            </div>
+                                            <div class='label-invo'>
+                                                <label class='label-invoice'>GST No  :</label>
+                                                <p>CO-25</p>
+                                            </div>
+                                            <div class='label-invo'>
+                                                <label class='label-invoice'>Reverse Charge  :</label>
+                                                <p>No</p>
+                                            </div>
+                                    </div>
+                                </div>
+
+                             
+                                    <table class='invice-table'>
+                                        <thead>
+                                            <tr>
+                                                <th>SN0</th>
+                                                <th>HSN</th>
+                                                <th>Item Name</th>
+                                                <th>QTY</th>
+                                                <th>UNIT</th>
+                                                <th>MRP</th>
+                                                <th>Disc%</th>
+                                                <th>Disc Amt</th>
+                                                <th>TAXABLE</th>
+                                                <th>GST%</th>
+                                                <th>GST AMT</th>
+                                                <th>AMOUNT</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody><tr>
+                                                <td>1</td>
+                                                <td>70853</td>
+                                                <td>  </td>
+                                                <td>GILOY GHAN VATI 60 PC (NEW) </td>
+                                                <td>1.000 </td>
+                                                <td>PCS </td>
+                                                <td>89.285714285714 </td>
+                                                <td>0.00 </td>
+                                                <td>89.285714285714 </td>
+                                                <td>GILOY GHAN VATI 60 PC (NEW) </td>
+                                                <td>12 </td>
+                                                <td>100.000000000000 </td>
+                                            </tr><tr>
+                                                <td>2</td>
+                                                <td>81934</td>
+                                                <td>  </td>
+                                                <td>ATTA DOODH RUSK 200 G - T </td>
+                                                <td>3.000 </td>
+                                                <td>PCS </td>
+                                                <td>28.571428571429 </td>
+                                                <td>0.00 </td>
+                                                <td>85.714285714286 </td>
+                                                <td>ATTA DOODH RUSK 200 G - T </td>
+                                                <td>5 </td>
+                                                <td>90.000000000000 </td>
+                                            </tr><tr>
+                                                <td>3</td>
+                                                <td>1102</td>
+                                                <td>  </td>
+                                                <td>HERBAL HANDWASH (ANTI BACTERIAL) 200 ML </td>
+                                                <td>2.000 </td>
+                                                <td>PCS </td>
+                                                <td>38.135593220339 </td>
+                                                <td>0.00 </td>
+                                                <td>76.271186440678 </td>
+                                                <td>HERBAL HANDWASH (ANTI BACTERIAL) 200 ML </td>
+                                                <td>18 </td>
+                                                <td>90.000000000000 </td>
+                                            </tr><tr>
+                                                <td>4</td>
+                                                <td>70856</td>
+                                                <td>  </td>
+                                                <td>TULSI GHAN VATI 40 GM (NEW) </td>
+                                                <td>1.000 </td>
+                                                <td>PCS </td>
+                                                <td>80.357142857143 </td>
+                                                <td>0.00 </td>
+                                                <td>80.357142857143 </td>
+                                                <td>TULSI GHAN VATI 40 GM (NEW) </td>
+                                                <td>12 </td>
+                                                <td>90.000000000000 </td>
+                                            </tr><tr>
+                                                <td>5</td>
+                                                <td>70405</td>
+                                                <td>  </td>
+                                                <td>TOMATO KETCHUP W. ONION GARLC-200 GM (B) </td>
+                                                <td>2.000 </td>
+                                                <td>PCS </td>
+                                                <td>35.714285714286 </td>
+                                                <td>0.00 </td>
+                                                <td>71.428571428571 </td>
+                                                <td>TOMATO KETCHUP W. ONION GARLC-200 GM (B) </td>
+                                                <td>12 </td>
+                                                <td>80.000000000000 </td>
+                                            </tr><tr>
+                                                <td>6</td>
+                                                <td>70044</td>
+                                                <td>  </td>
+                                                <td>COWS GHEE 500 ML </td>
+                                                <td>1.000 </td>
+                                                <td>PCS </td>
+                                                <td>263.392857142857 </td>
+                                                <td>0.00 </td>
+                                                <td>263.392857142857 </td>
+                                                <td>COWS GHEE 500 ML </td>
+                                                <td>12 </td>
+                                                <td>295.000000000000 </td>
+                                            </tr><tr>
+                                                <td>7</td>
+                                                <td>3018</td>
+                                                <td>  </td>
+                                                <td>NARIYAL BISCUITS 100 GM -T </td>
+                                                <td>2.000 </td>
+                                                <td>PCS </td>
+                                                <td>8.474576271186 </td>
+                                                <td>0.00 </td>
+                                                <td>16.949152542372 </td>
+                                                <td>NARIYAL BISCUITS 100 GM -T </td>
+                                                <td>18 </td>
+                                                <td>19.999999999999 </td>
+                                            </tr> </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th>Total</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th>Total</th>
+                                                <th>Total</th>
+                                                <th></th>
+                                                <th>Total</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </tfoot>  
+                                    </table>
+                                    <div class='tax-invice-btn'>
+                                        <div class='tax-invice-btmlft'>
+                                            <div class='tax'>TAX SUMMARY</div>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>IGST%</th>
+                                                        <th>IGST AMT</th>
+                                                        <th>SGST%</th>
+                                                        <th>SGST AMT</th>
+                                                        <th>CGST%</th>
+                                                        <th>CGST AMT</th>
+                                                        <th>TAXABLE</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>12</th>
+                                                        <th>60.535714285715</th>
+                                                        <th>6</th>
+                                                        <th>30.2678571428575</th>
+                                                        <th>6</th>
+                                                        <th>30.2678571428575</th>
+                                                        <th>0</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>5</th>
+                                                        <th>4.285714285714</th>
+                                                        <th>2.5</th>
+                                                        <th>2.142857142857</th>
+                                                        <th>2.5</th>
+                                                        <th>2.142857142857</th>
+                                                        <th>0</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>18</th>
+                                                        <th>16.779661016949</th>
+                                                        <th>9</th>
+                                                        <th>8.3898305084745</th>
+                                                        <th>9</th>
+                                                        <th>8.3898305084745</th>
+                                                        <th>0</th>
+                                                    </tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class='ttl'>Total:Seven hundred sixty-five Rs Only</div>
+                                            <div class='ttl'>T&C*:</div>
+                                        </div>
+                                        <div class='tax-invice-btmrgt'>
+                                            <div class='invice-ttl'>
+                                                <label>Disc Amt</label>
+                                                <span>0.000000000000</span>
+                                            </div>
+                                            <div class='invice-ttl'>
+                                                <label>Round off</label>
+                                                <span>0.000000000001</span>
+                                            </div>
+                                            <div class='invice-ttl'>
+                                                <label>Calamity Cess</label>
+                                                <span></span>
+                                            </div>
+                                            <div class='invice-ttl'>
+                                                <label>Tender Amt</label>
+                                                <span>765.00</span>
+                                            </div>
+                                            <div class='invice-ttl'>
+                                                <label><b>Balance</b></label>
+                                                <span>0.00</span>
+                                            </div>
+                                            <div class='invice-ttl'>
+                                                <label><b>Total Amt</b></label>
+                                                <span>765.000000000000</span>
+                                            </div>
+                                        </div>
+                                        <div class='INVOICEBTM'>
+                                            <label>For:</label>
+                                            <b>FIT INDIA ORGANIC PRIVATE LIMITED</b>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                      </body>
+                    </html>

@@ -1,0 +1,47 @@
+<p-panel>
+    <ng-template pTemplate="header"> Add Role </ng-template>
+    <div class="grid p-fluid">
+        <div class="field col-12 md:col-4" style="padding-top: 2em">
+            <span class="p-float-label">
+                <input type="hidden" [(ngModel)]="RoleId" />
+                <input
+                    type="text"
+                    id="inputtext"
+                    pInputText
+                    [(ngModel)]="RoleName"
+                    value="{{ RoleName }}"
+                />
+                <label for="inputtext">Enter Role Name</label>
+            </span>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button
+            label="Save"
+            (click)="onSubmit()"
+            icon="pi pi-check"
+            *ngIf="isShowSubmitBtn"
+        ></p-button>
+        <p-button
+            label="Update"
+            (click)="onUpdate()"
+            icon="pi pi-check"
+            styleClass="p-button-help"
+            *ngIf="queryParams.mode == 'edit'"
+        ></p-button>
+        <p-button
+            label="Delete"
+            (click)="onDelete()"
+            icon="pi pi-check"
+            styleClass="p-button-danger"
+            *ngIf="queryParams.mode == 'delete'"
+        ></p-button>
+        <p-button
+            label="Cancel"
+            icon="pi pi-times"
+            styleClass="p-button-secondary"
+            [style]="{ 'margin-left': '.5em' }"
+            (click)="onCancel()"
+        ></p-button>
+    </ng-template>
+</p-panel>

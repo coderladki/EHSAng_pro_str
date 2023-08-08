@@ -1,0 +1,121 @@
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h5 class="card-label">Email List</h5>
+        </div>
+        <div class="card-toolbar">
+            <button class="btn btn-primary" (click)="showAddDialog()">
+                <i class="fa fa-plus mr-2"></i> Add Email
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <p-table responsiveLayout="scroll" [value]="getAllEmails" [paginator]="true" [rows]="10"
+                class="table table-bordered ehs-table" styleClass="p-datatable-gridlines" [loading]="loading">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <td>ID</td>
+                        <td>Type</td>
+                        <td>PlantCode</td>
+                        <td>Division</td>
+                        <td>ToEmails</td>
+                        <td>CCEmails</td>
+
+                        <td>Action</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-getAllEmail let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{getAllEmail.emailMasterId}}</td>
+                        <td>{{getAllEmail.typeId}}</td>
+                        <td>{{getAllEmail.plantId}}</td>
+                        <td>{{getAllEmail.divisionId}}</td>
+                        <td>{{getAllEmail.to_Emails}}</td>
+                        <td>{{getAllEmail.cC_Emails}}</td>
+
+                        <td>
+                            <div class="d-flex">
+                                <i class="fa fa-pencil mr-3 pointer" aria-hidden="true"
+                                    (click)="showModalDialog(getAllEmail)"></i>
+                                <i class="fa fa-trash pointer" aria-hidden="true" (click)="deleteRow(getAllEmail);"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="6" style="font-weight: 900; font-size: 15px; color:red;">
+
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Edit Email" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [draggable]="false"
+    [resizable]="false">
+    <div class="row">
+        <div class="col-md-3">
+            <label class="mb-2">Type</label>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="editSelectedType">
+                <option>1</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="mb-2">Division</label>
+            <select class="form-select" aria-label="Select" [(ngModel)]="editSelectedDivision">
+                <option *ngFor=" let division of getDivisions" [value]="division.Id">
+                    {{division.Name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="mb-2">To Emails</label>
+            <input class="form-control" type="email" placeholder="To email" autocomplete="off"
+                [(ngModel)]="editToEmails" />
+        </div>
+        <div class="col-md-3">
+            <label class="mb-2">CC Emails</label>
+            <input class="form-control" type="email" placeholder="CC email" autocomplete="off"
+                [(ngModel)]="editCCEmails" />
+        </div>
+        <div class="col-md-3 mt-3">
+            <button class="btn btn-primary" (click)="editEmail(); displayModal=false">Edit Email</button>
+        </div>
+    </div>
+</p-dialog>
+
+
+<p-dialog header="Add Email" [(visible)]="addModal" [modal]="true" [style]="{width: '80vw'}" [draggable]="false"
+    [resizable]="false">
+    <div class="row">
+        <div class="col-md-3">
+            <label class="mb-2">Type</label>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedType">
+                <option>Division</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="mb-2">Division</label>
+            <select class="form-select" aria-label="Select" [(ngModel)]="selectedDivision">
+                <option *ngFor=" let division of getDivisions" [value]="division.Id">
+                    {{division.Name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="mb-2">To Emails</label>
+            <input class="form-control" type="email" placeholder="To email" autocomplete="off" [(ngModel)]="toEmails" />
+        </div>
+        <div class="col-md-3">
+            <label class="mb-2">CC Emails</label>
+            <input class="form-control" type="email" placeholder="CC email" autocomplete="off" [(ngModel)]="ccEmails" />
+        </div>
+        <div class="col-md-3 mt-3">
+            <button class="btn btn-primary" (click)="addEmail(); displayModal=false">Add Email</button>
+        </div>
+    </div>
+</p-dialog>

@@ -1,0 +1,151 @@
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h5 class="card-label">Add User</h5>
+                </div>
+                <div class="card-toolbar">
+                    <a routerLink="/users/user-list" class="btn btn-secondary">
+                        <i class="fa fa-long-arrow-alt-left mr-2"></i> Back
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="outernewlead-form">
+                    <form action="" [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">First Name<span
+                                            class="error-label">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Enter First Name"
+                                        name="firstname" formControlName="firstName" />
+                                    <span class="error-label"
+                                        *ngIf="UserForm.controls['firstName']?.touched && UserForm.controls['firstName'].errors?.['required']">
+                                        First Name is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Last Name<span class="error-label">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Enter Last Name"
+                                        name="lastname" formControlName="lastName" />
+                                    <span class="error-label"
+                                        *ngIf="UserForm.controls['lastName']?.touched && UserForm.controls['lastName']?.errors?.['required']">
+                                        Last Name is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">User Name<span class="error-label">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Enter User Name"
+                                        name="username" formControlName="userName" />
+                                    <span class="error-label"
+                                        *ngIf="UserForm.controls['userName']?.touched && UserForm.controls['userName']?.errors?.['required']">
+                                        User Name is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Password<span class="error-label">*</span></label>
+                                    <input type="password" class="form-control" placeholder="Password"
+                                        formControlName="Password" minlength="10" maxlength="20"
+                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{10,}$" />
+                                    <span class="error-label"
+                                        *ngIf="UserForm.controls['Password']?.touched && UserForm.controls['Password']?.errors?.['required']">
+                                        Password is required.
+                                    </span>
+
+                                    <span class="error-label"
+                                        *ngIf=" UserForm.controls['Password']?.errors?.['minlength'] || UserForm.controls['Password']?.errors?.['maxlength']">
+                                        Password must be between 10 to 20
+                                        characters.
+                                    </span>
+
+                                    <span class="error-label"
+                                        *ngIf=" !UserForm.controls['Password']?.errors?.['minlength'] && !UserForm.controls['Password']?.errors?.['maxlength'] && UserForm.controls['Password']?.errors?.['pattern']">
+                                        Password must contains atleast one
+                                        special character, numbers, atleast one
+                                        uppercase and one lowercase characters.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Mobile Number<span
+                                            class="error-label">*</span></label>
+                                    <input type="text" class="form-control" formControlName="PhoneNumber"
+                                        placeholder="Phone Number" minlength="10" maxlength="10"
+                                        (keypress)="validateNumber($event)" />
+                                    <span class="error-label"
+                                        *ngIf="UserForm.controls['PhoneNumber']?.touched && UserForm.controls['PhoneNumber']?.errors?.['required']">
+                                        Mobile Number is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">E-Mail<span class="error-label">*</span></label>
+                                    <input type="email" class="form-control" placeholder="Enter E-mail" name="email"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" formControlName="email" />
+                                    <span class="error-label"
+                                        *ngIf="UserForm.controls['email']?.touched && UserForm.controls['email']?.errors?.['required']">
+                                        Email is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Status<span class="error-label">*</span></label>
+                                    <select class="form-select" formControlName="Status">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                    <span class="error-label"
+                                        *ngIf="UserForm.controls['Status']?.touched && UserForm.controls['Status']?.errors?.['required']">
+                                        Status is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Role<span class="error-label">*</span></label>
+                                    <select class="form-select" formControlName="Roll" name="roll">
+                                        <option *ngFor="let roll of RollList" [value]="roll.name">
+                                            {{ roll.name }}
+                                        </option>
+                                    </select>
+                                    <span class="error-label"
+                                        *ngIf="UserForm.controls['Roll']?.touched && UserForm.controls['Roll']?.errors?.['required']">
+                                        Role is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Unit Name<span
+                                            class="error-label">*</span></label>
+                                    <input type="text" class="form-control" formControlName="UnitName"
+                                        placeholder="Unit Name" />
+                                    <span class="text-danger"
+                                        *ngIf="UserForm.controls['UnitName']?.touched && UserForm.controls['UnitName']?.errors?.['required']">
+                                        Unit Name is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 pt-3">
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

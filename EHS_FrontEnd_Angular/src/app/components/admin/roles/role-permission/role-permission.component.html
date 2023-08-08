@@ -1,0 +1,171 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 mb-3">
+            <div class="card">
+                <div class="card-header bg-default">
+                    <div
+                        class="d-flex align-items-center justify-content-between"
+                    >
+                        <div>
+                            Role Name:
+                            <strong *ngIf="roleDetails != undefined">{{
+                                roleDetails.roleName
+                            }}</strong>
+                        </div>
+                        <div class="pull-right">
+                            <a
+                                [routerLink]="NavigateUrl"
+                                class="btn btn-sm btn-secondary"
+                                >Go to list</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div
+                                class="d-flex align-items-center justify-content-between"
+                            >
+                                <h4>Exist User Against Role</h4>
+                                <button
+                                    type="button"
+                                    class="btn btn-info"
+                                    (click)="onRoleUsers()"
+                                >
+                                    Update Role User
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let user of roleDetails.users">
+                                        <td>{{ user }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div style="float: right; padding-bottom: 8px">
+                <a
+                    class="btn btn-green"
+                    (click)="updateRolesandPermission()"
+                    class="btn btn-light-primary"
+                    style="border: 1px solid; height: 35px"
+                    >Update</a
+                >
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3>Navigation Permission</h3>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    [(ngModel)]="
+                                        masterSelectedNavigationPermission
+                                    "
+                                    (change)="
+                                        checkUncheckAllNavigationPermission()
+                                    "
+                                    [checked]="
+                                        isAllNavigationPermissionSelected
+                                    "
+                                    [indeterminate]="
+                                        !isAllNavigationPermissionSelected &&
+                                        isAnyNavigationPermissionSelected
+                                    "
+                                />
+                                <strong style="padding-left: 5px"
+                                    >Select/ Unselect All</strong
+                                >
+                                <div class="groupItem">
+                                    <div
+                                        class="list-group-item"
+                                        *ngFor="
+                                            let item of navigationPermissionCheckList
+                                        "
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            [(ngModel)]="item.Selected"
+                                            (change)="
+                                                allNavigationPremissionSelected(
+                                                    item.id,
+                                                    item.Selected
+                                                )
+                                            "
+                                        />
+                                        {{ item.Name }}
+                                        <a
+                                            (click)="check(item.id)"
+                                            class="pull-right"
+                                        >
+                                            <i class="fa fa-filter"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3>Permission</h3>
+                            </div>
+                        </div>
+                        <div class="card-body" *ngIf="showList">
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    [(ngModel)]="masterSelectedPermission"
+                                    (change)="checkUncheckAllPermission()"
+                                    [checked]="isAllPermissionSelected"
+                                    [indeterminate]="
+                                        !isAllPermissionSelected &&
+                                        isAnyPermissionSelected
+                                    "
+                                />
+                                <strong style="padding-left: 5px"
+                                    >Select/ Unselect All</strong
+                                >
+                                <div
+                                    style="
+                                        max-height: 300px;
+                                        overflow-x: scroll;
+                                    "
+                                >
+                                    <div
+                                        class="list-group-item"
+                                        *ngFor="let item of permissionCheckList"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            [(ngModel)]="item.Selected"
+                                            (change)="allPremissionSelected()"
+                                        />
+                                        {{ item.Name }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

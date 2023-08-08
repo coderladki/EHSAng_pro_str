@@ -1,0 +1,743 @@
+{
+	"info": {
+		"_postman_id": "b01c1292-c965-4d66-bcdb-a19c1161306c",
+		"name": "CRM_Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Head",
+			"item": [
+				{
+					"name": "Create Head",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Test SubHead 1\",\r\n    \"parentId\":4,\r\n    \"fundFlowIds\":[3,4]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/heads",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"heads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Head",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"name\":\"Test\",\r\n    \"fundFlowIds\":[4]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/heads",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"heads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Head By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/heads/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"heads",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Heads",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/heads/2/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"heads",
+								"2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Temp Transaction",
+			"item": [
+				{
+					"name": "Create Temp Transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"headId\":3,\r\n    \"calenderMasterId\":25,\r\n    \"fundFlowId\":2,\r\n    \"planned\":11,\r\n    \"actual\":10,\r\n    \"duration\":3,\r\n    \"transactionDate\":\"2013-09-01T00:00\",\r\n    \"projectId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/temptransactions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"temptransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Temp Transaction Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/temptransactions/67",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"temptransactions",
+								"67"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Temp Transaction Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/temptransactions/0/200",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"temptransactions",
+								"0",
+								"200"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Temp Transaction",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\":6,\r\n    \"headId\":3,\r\n    \"calenderMasterId\":25,\r\n    \"fundFlowId\":2,\r\n    \"planned\":30,\r\n    \"projectId\":1,\r\n    \"actual\":30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/temptransactions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"temptransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upprove TempTransaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tempTransactionIds\":[36,\r\n37,\r\n38,\r\n39,\r\n40,\r\n41,\r\n42,\r\n43,\r\n44,\r\n45,\r\n46,\r\n47,\r\n48,\r\n49,\r\n50,\r\n51,\r\n52,\r\n53,\r\n54,\r\n55,\r\n56,\r\n57,\r\n58,\r\n59,\r\n60,\r\n61,\r\n62,\r\n63,\r\n64,\r\n65,\r\n66,\r\n67]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/temptransactions/upprove",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"temptransactions",
+								"upprove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Temp Yransaction by Project Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/temptransactions/project/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"temptransactions",
+								"project",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Calender Master",
+			"item": [
+				{
+					"name": "Get All Calender Master",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Calender",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/generatecalender/60",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"generatecalender",
+								"60"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Fund Flow",
+			"item": [
+				{
+					"name": "Fund Flows",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/fundflows",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fundflows"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Get All Transaction",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/transactions/0/10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transaction Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/transactions/2013/0/1000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions",
+								"2013",
+								"0",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Create Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Project 1\",\r\n    \"headIds\":[2,3,4,7]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/projects/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/projects/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/projects/getall",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Refresh Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10b70208-e034-4d4c-991e-0e573fa08af6",
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\",data.token.access_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\":\"AHQIj0s/iCvo62YPg+QRyl0USLvAxphfDrHcY9CUI5GIRdR8HpKwNI1t3LsOKflJ1w==\",\r\n    \"UserEmail\":\"test@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/refreshtoken",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"refreshtoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dec64b5f-140c-4e4d-aceb-5c391d82afa2",
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\",data.token.access_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"amit@gmail.com\",\r\n    \"password\":\"Abc@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"amit@gmail.com\",\r\n    \"password\":\"Abc@123\",\r\n    \"firstName\":\"Amit\",\r\n    \"lastName\":\"Kumar\",\r\n    \"phoneNumber\":\"9876543234\",\r\n    \"roles\":[\"admin\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"firstName\": \"Amit\",\r\n    \"lastName\": \"kumar\",\r\n    \"email\": \"amit@gmail.com\",\r\n    \"phoneNumber\": \"9876543210\",\r\n    \"roles\": [\r\n        \"Admin\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/users/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/users/getall",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generate Temp Transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorizationa",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/test",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,277 @@
+<!-- <div class="card">
+    <div class="card-body">
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <input class="form-control" type="file" placeholder="Search Employee" autocomplete="off" />
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary">Upload </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input class="form-control" type="text" placeholder="Search Employee" autocomplete="off" />
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary">Search Employee</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h5 class="card-label">Employee</h5>
+        </div>
+        <div class="card-toolbar">
+            <button class="btn btn-primary" (click)="showModalDialog()">
+                <i class="fa fa-plus mr-2"></i> Add Employee
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <p-table responsiveLayout="scroll" [value]="getEmployees" [paginator]="true" [rows]="10"
+                class="table table-bordered ehs-table" styleClass="p-datatable-gridlines" [loading]="loading">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <td>EmplyeeID</td>
+                        <td>FirstName</td>
+                        <td>LastName</td>
+                        <td>Date Of Birth</td>
+                        <td>Department</td>
+                        <td>Designation</td>
+                        <td>Unit</td>
+                        <td>Mobile</td>
+                        <td>Email</td>
+                        <td>Other1</td>
+                        <td>Agency</td>
+                        <td>XEmplyee </td>
+                        <td>Action</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-getEmployee let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{getEmployee.EmployeeId}}</td>
+                        <td>{{getEmployee.FirstName}}</td>
+                        <td>{{getEmployee.LastName}}</td>
+                        <td>{{getEmployee.DateofBirth|date:'dd-MM-yyyy'}}</td>
+                        <td>{{getEmployee.Department}}</td>
+                        <td>{{getEmployee.Designation}}</td>
+                        <td>{{getEmployee.Unit}}</td>
+                        <td>{{getEmployee.Mobile}}</td>
+                        <td>{{getEmployee.Email}}</td>
+                        <td>{{getEmployee.Other != null ? getEmployee.Other:'NULL'}}</td>
+                        <td>{{getEmployee.Agency != null ? getEmployee.Agency:'NULL'}}</td>
+                        <td>{{getEmployee.XEmployee}}</td>
+                        <td>
+                            <div class="d-flex">
+                                <i class="fa fa-pencil mr-3 pointer" aria-hidden="true"
+                                    (click)="showEditDialog(getEmployee)"></i>
+                                <i class="fa fa-trash pointer" aria-hidden="true" (click)="deleteRow(getEmployee);"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate=" emptymessage">
+                    <tr>
+                        <td colspan="6" style="font-weight: 900; font-size: 15px; color:red;">
+
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+
+<p-dialog header="Add New Employee" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw', height:'100%'}"
+    [draggable]="false" [resizable]="false">
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">First Name</label>
+            <input class="form-control" type="text" placeholder="First Name" autocomplete="off" [(ngModel)]="fName" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Last Name</label>
+            <input class="form-control" type="text" placeholder="Last Name" autocomplete="off" [(ngModel)]="lName" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Date Of Birth</label>
+            <p-calendar [(ngModel)]="dob"></p-calendar>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Department</label>
+            <input class="form-control" type="text" placeholder="Department" autocomplete="off"
+                [(ngModel)]="departmentName" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Designation</label>
+            <input class="form-control" type="text" placeholder="Designation" autocomplete="off"
+                [(ngModel)]="designationName" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Unit</label>
+            <!-- <input class="form-control" type="text" placeholder="Unit" autocomplete="off" [(ngModel)]="unitName" /> -->
+            <p-multiSelect [options]="Unit" [(ngModel)]="selectedUnit" defaultLabel="Select Unit"
+                optionLabel="unitDisplayName">
+            </p-multiSelect>
+
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Mobile</label>
+            <input class="form-control" type="text" placeholder="Mobile" autocomplete="off" [(ngModel)]="mobileNumber"
+                maxlength="10" pattern="\d{10}" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Email</label>
+            <input class="form-control" type="email" placeholder="Email" autocomplete="off" [(ngModel)]="emailId" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Other Email</label>
+            <input class="form-control" type="email" placeholder="Other Email" autocomplete="off"
+                [(ngModel)]="otherEmail" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Password</label><br />
+            <!-- <input class="form-control" type="password" placeholder="Password" autocomplete="off"
+                [(ngModel)]="password" /> -->
+
+            <p-password [(ngModel)]="password" class="w-100">
+                <ng-template pTemplate="footer">
+                    <p-divider></p-divider>
+                    <p class="mt-2">Suggestions</p>
+                    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                        <li>At least one lowercase</li>
+                        <li>At least one uppercase</li>
+                        <li>At least one numeric</li>
+                        <li>At least one alpha numeric</li>
+                        <li>Minimum 8 characters</li>
+                    </ul>
+                </ng-template>
+            </p-password>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Agency Name</label>
+            <input class="form-control" type="text" placeholder="Agency Name" autocomplete="off"
+                [(ngModel)]="agencyNumber" />
+        </div>
+        <div class="col-md-3 mb-3 mt-5">
+            Gender:
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value=1
+                    [(ngModel)]="gender">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=2
+                    [(ngModel)]="gender">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+        </div>
+        <div class="col-md-3 mt- mb-3 mt-5">
+            <label class="mb-2">X Employee</label>
+            <input class="ml-5" type="checkbox" [(ngModel)]="xEmployee" />
+        </div>
+        <div class="col-md-3 mb-3 mt-5">
+            <button class="btn btn-primary w-100" (click)="addEmployee(); displayModal=false">Save </button>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog header="Edit Employee" [(visible)]="displayEditModal" [modal]="true" [style]="{width: '80vw', height:'90%'}"
+    [draggable]="false" [resizable]="false">
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">First Name</label>
+            <input class="form-control" type="text" placeholder="First Name" autocomplete="off"
+                [(ngModel)]="editFName" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Last Name</label>
+            <input class="form-control" type="text" placeholder="Last Name" autocomplete="off"
+                [(ngModel)]="editLName" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Date Of Birth</label>
+            <p-calendar [(ngModel)]="editDOB"></p-calendar>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Department</label>
+            <input class="form-control" type="text" placeholder="Department" autocomplete="off"
+                [(ngModel)]="editDepartmentName" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Designation</label>
+            <input class="form-control" type="text" placeholder="Designation" autocomplete="off"
+                [(ngModel)]="editDesignationName" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Unit</label>
+            <!-- <input class="form-control" type="text" placeholder="Unit" autocomplete="off" [(ngModel)]="editUnitName" /> -->
+
+            <p-multiSelect [options]="Unit" [(ngModel)]="selectedUnit" defaultLabel="Select Unit"
+                optionLabel="unitDisplayName">
+            </p-multiSelect>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Mobile</label>
+            <input class="form-control" type="text" placeholder="Mobile" autocomplete="off"
+                [(ngModel)]="editMobileNumber" maxlength="10" pattern="\d{10}" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Email</label>
+            <input class="form-control" type="email" placeholder="Email" autocomplete="off" [(ngModel)]="editEmailId" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Other Email</label>
+            <input class="form-control" type="email" placeholder="Other Email" autocomplete="off"
+                [(ngModel)]="editOtherEmail" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Password</label>
+            <!-- <input class="form-control" type="text" placeholder="Password" autocomplete="off"
+                [(ngModel)]="editPassword" /> -->
+            <p-password [(ngModel)]="editPassword" class="w-100">
+                <ng-template pTemplate="footer">
+                    <p-divider></p-divider>
+                    <p class="mt-2">Suggestions</p>
+                    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                        <li>At least one lowercase</li>
+                        <li>At least one uppercase</li>
+                        <li>At least one numeric</li>
+                        <li>At least one alpha numeric</li>
+                        <li>Minimum 8 characters</li>
+                    </ul>
+                </ng-template>
+            </p-password>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Agency Name</label>
+            <input class="form-control" type="text" placeholder="Agency Name" autocomplete="off"
+                [(ngModel)]="editAgencyNumber" />
+        </div>
+        <div class="col-md-3 mb-3 mt-5">
+            Gender:
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value=1
+                    [(ngModel)]="editGender">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=2
+                    [(ngModel)]="editGender">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3 mt-5">
+            <label class="mb-2">X Employee</label>
+            <input class="ml-5" type="checkbox" [(ngModel)]="editXEmployee" />
+        </div>
+        <div class="col-md-3 mt-5">
+            <button class="btn btn-primary w-100" (click)="editEmployee(); displayEditModal=false">Save </button>
+        </div>
+    </div>
+</p-dialog>

@@ -1,0 +1,375 @@
+/* You can add global styles to this file, and also import other style files */
+
+$gutter: 1rem; //for primeflex grid system
+@import "assets/layout/styles/layout/layout.scss";
+
+/* PrimeNG */
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+
+/* Demos */
+@import "assets/styles/flags/flags.css";
+@import "assets/styles/badges.scss";
+@import "assets/styles/code.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/*Theme*/
+body {
+    background-color: #ECF8FE;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+    background: #6C8C5D;
+    border-color: #6C8C5D;
+    height: 45px;
+}
+
+.layout-sidebar {
+    width: 246px;
+    top: 70px;
+    border-radius: 0 !important;
+    padding: 1rem;
+    background: #fff;
+    color: #6C8C5D;
+    left: 0;
+    height: 100vh;
+}
+
+.layout-topbar {
+    background: #6C8C5D;
+}
+
+// .layout-wrapper.layout-static.layout-static-inactive .layout-sidebar {left: 70px; width: auto; }
+.layout-wrapper.layout-static.layout-static-inactive .layout-menuitem-text {
+    display: none;
+}
+
+.layout-wrapper.layout-static.layout-static-inactive .layout-menu ul a {
+    left: 0px;
+}
+
+// .layout-wrapper.layout-static.layout-static-inactive .layout-main { margin-left: 60px;}
+.layout-wrapper.layout-static .layout-main-container {
+    margin-left: 210px;
+}
+
+.layout-wrapper.layout-static.layout-static-inactive .layout-menu img {
+    position: relative;
+    left: 20px;
+}
+
+.layout-topbar-menu i,
+.layout-topbar .layout-menu-button {
+    color: #6C8C5D;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card {
+    background-color: #fff;
+    box-shadow: -2px -2px 5px #fff, 3px 3px 5px #0000001a;
+    border-radius: 5px;
+    border: 0;
+    padding: 0;
+}
+
+.nav-tabs {
+    border: 0;
+}
+
+.nav-tabs .nav-link {
+    border: 0;
+    font-size: 16px;
+    color: #023C40 !important;
+}
+
+.nav-tabs .nav-link.active {
+    border: 0;
+    font-weight: 700;
+    border-bottom: 3px solid #023C40;
+}
+
+// .login-bg {  width: 100%; height:100vh; background:url(../../EHS/src/assets/layout/images/login-bg.jpg) bottom center; background-size: cover;}
+.login-bg {
+    width: 100%;
+    height: 100vh;
+    background: url(../../EHS_FrontEnd_Angular/src/assets/layout/images/login-bg.jpg) bottom center;
+    background-size: cover;
+}
+
+.login {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+
+.login-box {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0px 2px 6px #00000016;
+    border-radius: 10px;
+    color: #6C8C5D;
+}
+
+.form-control,
+.p-calendar {
+    height: 45px;
+    border: 1px solid #6C8C5D;
+}
+
+.p-calendar {
+    width: 100%;
+    border-radius: 6px;
+}
+
+label {
+    color: #6C8C5D;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
+    border-color: #6C8C5D;
+    background: #6C8C5D;
+    color: #ffffff;
+}
+
+.layout-topbar .layout-topbar-button:hover {
+    background: #fff !important;
+    border: 0 !important;
+}
+
+.layout-topbar .layout-topbar-button {
+    border: 0 !important;
+}
+
+.board-text {
+    text-align: center;
+}
+
+.board-text h3 {
+    font-size: 16px;
+    font-weight: 300;
+    color: #6C8C5D;
+    margin-bottom: 0;
+}
+
+.ehs-table {
+    width: 100%;
+    line-height: 40px;
+}
+
+.ehs-table thead {
+    background: #6C8C5D;
+    font-weight: 500;
+    // text-indent: 15px;
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    height: 43px;
+}
+
+.ehs-table tr td {
+    border: 1px solid #c9d5db;
+    padding: 5px 15px;
+    line-height: 25px;
+}
+
+.ehs-table i {
+    font-size: 20px;
+    color: #6C8C5D;
+}
+
+.form-select {
+    height: 45px;
+    border: 1px solid #6C8C5D;
+}
+
+.ehs-table .table-button {
+    background-color: #6C8C5D;
+    padding: 5px;
+    border: 1px solid #6C8C5D;
+}
+
+.regenerate {
+    background-color: #6C8C5D;
+    border: 1px solid #6C8C5D;
+    width: 140px;
+    height: 50px;
+    margin: auto;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.card-header {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    min-height: 55px;
+}
+
+.card-toolbar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+h5.card-label,
+.card-title {
+    margin: 0 !important;
+}
+
+.choosefile {
+    border: 1px solid #6C8C5D;
+    width: 95%;
+    margin: auto;
+    text-align: center;
+}
+
+.incidenttd .form-control {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #6C8C5D;
+}
+
+.incidenttd .form-select {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #6C8C5D;
+}
+
+.incident-header {
+    background-color: #6C8C5D;
+    padding: 10px;
+    color: white;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.accordion-button::after {
+    background-image: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: none;
+}
+
+.accordion-button:not(.collapsed) {
+    color: black;
+    background-color: #ffffff;
+    box-shadow: inset 0 -1px 0 white;
+}
+
+.accordion-body .viewtable {
+    border: 1px solid #c9d5db;
+    padding: 5px;
+    line-height: 25px;
+}
+
+.accordion-body .viewtable .form-control {
+    border: 1px solid #6C8C5D;
+    padding: 5px;
+}
+
+.deptsect {
+    margin: auto;
+}
+
+.deptsect tr td {
+    border: 1px solid #c9d5db;
+    padding: 5px;
+    line-height: 25px;
+}
+
+.deptsect thead {
+    background: #6C8C5D;
+    font-weight: 500;
+    // text-indent: 15px;
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    height: 43px;
+}
+
+.accordion-body .delete {
+    border: 1px solid #6C8C5D;
+    border-radius: 5px;
+}
+
+.viewtable .form-select {
+    border: 1px solid #6C8C5D;
+}
+
+.viewtable th {
+    background-color: #6C8C5D;
+    color: white;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 5px;
+}
+
+.incident-header h4 {
+    color: white;
+}
+
+.addbtn {
+    background-color: #6C8C5D;
+    border: 1px solid #6C8C5D;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+}
+
+.ehs-table .form-control {
+    border: 1px solid #6C8C5D;
+}
+
+.ehs-table .form-select {
+    border: 1px solid #6C8C5D;
+}
+
+.ehs-table .delete {
+    border: 1px solid #6C8C5D;
+    border-radius: 5px;
+}
+
+.searchbtn {
+    border: 1px solid #6C8C5D;
+    background-color: #6C8C5D;
+    color: white;
+    padding: 5px;
+    // margin-top: 30px;
+    border-radius: 5px;
+}
+
+.p-button {
+    background-color: #6C8C5D;
+    border: 1px solid #6C8C5D;
+    border-radius: 5px;
+}
+
+.exportbtn {
+    border: 1px solid white;
+    background-color: white;
+}

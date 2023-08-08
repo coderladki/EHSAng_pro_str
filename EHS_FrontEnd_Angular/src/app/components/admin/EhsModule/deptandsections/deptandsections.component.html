@@ -1,0 +1,744 @@
+<div class="card">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex incident-header">
+                <h4>Department</h4>
+            </div>
+            <div class="card-toolbar">
+                <button class="btn btn-primary" (click)="showAddDialog()">
+                    <i class="fa fa-plus mr-2"></i> Add Department
+                </button>
+            </div>
+            <div class="table-responsive mt-5 p-2">
+                <table class="table table-bordered deptsect">
+                    <thead>
+                        <td>Department Name</td>
+                        <td>View All Area</td>
+                        <td></td>
+                    </thead>
+                    <tr *ngFor="let department of DepartmentList">
+                        <td>
+                            <a routerLink="/ehs/dept-subsection-edit">{{department.departmentName}}</a>
+                        </td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><i class="fa fa-pencil mr-3" aria-hidden="true" (click)="showModalDialog(department)"></i><i
+                                class="fa fa-trash" aria-hidden="true" (click)="deleteRow(department);"></i>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td><a href="#">Engineering</a></td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne1"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne1" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><a href="#"><i class="fa fa-pencil mr-3" aria-hidden="true"></i><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">HR Admin</a></td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne2"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne2" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><a href="#"><i class="fa fa-pencil mr-3" aria-hidden="true"></i><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">IT</a></td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne3"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne3" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><a href="#"><i class="fa fa-pencil mr-3" aria-hidden="true"></i><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Production</a></td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne4"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne4" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><a href="#"><i class="fa fa-pencil mr-3" aria-hidden="true"></i><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Quality Assurance</a></td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne5"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne5" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><a href="#"><i class="fa fa-pencil mr-3" aria-hidden="true"></i><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Quality Control - Chemical</a></td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne6"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne6" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><a href="#"><i class="fa fa-pencil mr-3" aria-hidden="true"></i><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Quality Control - Micro</a></td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne7"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne7" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><a href="#"><i class="fa fa-pencil mr-3" aria-hidden="true"></i><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Warehouse</a></td>
+                        <td>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne8"
+                                            aria-expanded="false" aria-controls="flush-collapseOne"
+                                            style="color: #6366F1">
+                                            <u>View Area</u>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne8" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Section Name</th>
+                                                        <th></th>
+                                                        <tr style="line-height:20px">
+                                                            <td>MEE</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ETP</td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" /></td>
+                                                            <td><i class="fa fa-pencil" aria-hidden="true"></i><i
+                                                                    class="fa fa-trash" aria-hidden="true"></i></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-bordered viewtable">
+                                                        <th>Category</th>
+                                                        <th>Employee</th>
+                                                        <th></th>
+                                                        <tr>
+                                                            <td>SI</td>
+                                                            <td>Shivani Bangera | 120099</td>
+                                                            <td><button
+                                                                    class="delete">Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <button class="delete mt-2">Edit</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-select" aria-label="Select">
+                                                                    <option>--Select--</option>
+                                                                    <option>SI</option>
+                                                                    <option>SLT</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input class="form-control" type="text" placeholder=""
+                                                                    autocomplete="off" />
+                                                            </td>
+                                                            <td><button class="delete">Insert</button></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><a href="#"><i class="fa fa-pencil mr-3" aria-hidden="true"></i><i class="fa fa-trash"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr> -->
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Edit Department" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false">
+    <div class="row">
+        <div class="col-md-8">
+            <input class="form-control" type="text" placeholder="{{this.editName}}" autocomplete="off"
+                [(ngModel)]="editDepartmentName" />
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" (click)="editDepartment(); displayModal=false">Edit Department</button>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog header="Add Department" [(visible)]="addModal" [modal]="true" [style]="{width: '50vw'}" [draggable]="false"
+    [resizable]="false">
+    <div class="row">
+        <div class="col-md-6">
+            <input class="form-control" type="text" placeholder="Enter Department Name" autocomplete="off"
+                [(ngModel)]="departmentName" />
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary" (click)="addDepartment(); displayModal=false">Add Department</button>
+        </div>
+    </div>
+</p-dialog>
